@@ -6,9 +6,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 @Entity
+@NamedStoredProcedureQueries({
+	@NamedStoredProcedureQuery(
+			  name = "java_procedure_paquete",
+			  procedureName = "registrarpaquete",
+			  parameters = {
+					  @StoredProcedureParameter(mode = ParameterMode.IN,name = "paramIn1",type = String.class),
+					  @StoredProcedureParameter(mode = ParameterMode.IN,name = "paramIn2",type = Double.class),
+					  @StoredProcedureParameter(mode = ParameterMode.IN,name = "paramIn3",type = String.class),
+					  @StoredProcedureParameter(mode = ParameterMode.IN,name = "paramIn4",type = String.class),
+					  @StoredProcedureParameter(mode = ParameterMode.IN,name = "paramIn5",type = String.class),
+					  @StoredProcedureParameter(mode = ParameterMode.OUT,name = "paramOut",type = String.class)
+			  }
+			)
+})
 @Table(name = "paquetes")
 public class Paquete implements Serializable {
 

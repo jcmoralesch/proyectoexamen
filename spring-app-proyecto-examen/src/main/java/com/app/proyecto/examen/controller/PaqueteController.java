@@ -50,8 +50,12 @@ public class PaqueteController {
 		paquete.getTipo().toUpperCase();
 		paquete.getVigencia().toUpperCase();
 		
-		paqueteService.save(paquete);
-		status.setComplete();
+		//En este metodo registro en la base de datos utilizando el metodo save() que ofrece JPA
+		paqueteService.save(paquete);  
+		
+		//En este metodo registro en la base de datos ejecutando un procedimiento almacenado.
+		/*paqueteService.procedureRegistrarPaquete(paquete.getNombre(), paquete.getPrecio(), paquete.getTipo(), paquete.getCantidadBolson(), paquete.getVigencia());
+		status.setComplete(); */
 		flash.addFlashAttribute("success", "Operacion realizada con exito");
 		
 		return "redirect:/paquete/listar";		

@@ -41,4 +41,13 @@ public class PaqueteServiceImpl implements IPaqueteService{
 		return paqueteDao.findAll();
 	}
 
+	@Override
+	@Transactional
+	public String procedureRegistrarPaquete(String paramIn1, Double paramIn2, String paramIn3, String paramIn4,
+			String paramIn5) {
+		
+		paqueteDao.procedureRegistrarPaquete(paramIn1, paramIn2, paramIn3, paramIn4, paramIn5);
+		return null;
+	}
+
 }
