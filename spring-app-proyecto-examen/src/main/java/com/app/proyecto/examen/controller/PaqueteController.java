@@ -70,8 +70,22 @@ public class PaqueteController {
         }
         	
         	flash.addFlashAttribute("danger", "Registro no existe en la BBDD");
-        	return "redirect:/paquete/listar";
-        	
+        	return "redirect:/paquete/listar";	
+	}
+	
+	@GetMapping("/eliminar/{id}")
+	public String eliminar(@PathVariable Long id,RedirectAttributes flash) {
+		
+		Paquete paquete= paqueteService.findById(id);
+		if(paquete!=null) {
+			paqueteService.delete(id);
+			flash.addFlashAttribute("success", "Registro elimanado con exito");
+			
+			return "redirect:/paquete/listar";
+		}
+		
+		flash.addFlashAttribute("danger", "Error al eliminar no existe el registro en la BBDD");
+		return "redirect:/paquete/listar";
 	}
 
 }
