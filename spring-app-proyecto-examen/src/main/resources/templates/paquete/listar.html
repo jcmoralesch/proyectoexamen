@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container">
+
+    <div class="card">
+  <div class="card-header">
+  <div class="row">
+  <div class="col-9"></div>
+  <div class="col"> <a class="btn btn-success" th:href="@{/paquete/form}">Registrar nuevo</a></div>
+  </div>
+    
+  </div>
+  <div class="card-body">
+    
+     <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Codigo</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Cantida bolson</th>
+      <th scope="col">Vigencia</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="paquete : ${paquetes}">
+      <th scope="row" th:text="${paquete.id}"></th>
+      <td th:text="${paquete.nombre}"></td>
+      <td th:text="${paquete.precio}"></td>
+      <td th:text="${paquete.tipo}"></td>
+      <td th:text="${paquete.cantidadBolson}"></td>
+      <td th:text="${paquete.vigencia}"></td>
+    </tr>
+  </tbody>
+</table>
+    
+    
+    
+  </div>
+</div>
+
+
+
+
+
+  
+
+</div>
+
+
+
+
+
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>
