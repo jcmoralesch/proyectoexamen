@@ -6,7 +6,7 @@
 
 <header th:replace="layout/layout :: header"></header>
 
-<div class="container">
+<div class="container mt-5">
 
     <div class="card">
   <div class="card-header">
@@ -18,7 +18,7 @@
   </div>
   <div class="card-body">
     
-     <table class="table">
+     <table class="table table-striped btn-sm">
   <thead>
     <tr>
       <th scope="col">Codigo</th>
@@ -27,6 +27,7 @@
       <th scope="col">Tipo</th>
       <th scope="col">Cantida bolson</th>
       <th scope="col">Vigencia</th>
+      <th>Acciones</th>
       
     </tr>
   </thead>
@@ -38,6 +39,10 @@
       <td th:text="${paquete.tipo}"></td>
       <td th:text="${paquete.cantidadBolson}"></td>
       <td th:text="${paquete.vigencia}"></td>
+      <td>
+          <a class="btn btn-info" th:href="@{/paquete/editar/} + ${paquete.id}"> Editar</a>
+          <a class="btn btn-danger" th:href="@{/paquete/eliminar/} + ${paquete.id}"> Eliminar</a>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -48,17 +53,7 @@
 </div>
 
 
-
-
-
-  
-
 </div>
-
-
-
-
-
 
 <footer th:replace="layout/layout :: footer"></footer>
 

@@ -48,10 +48,8 @@
 			</div>
 		</nav>
 
-		<div class="alert alert-success" role="alert">A simple success
-			alert—check it out!</div>
-		<div class="alert alert-danger" role="alert">A simple danger
-			alert—check it out!</div>
+		<div th:if="${success} !=null" class="alert alert-success" role="alert" th:text="${success}"></div>
+		<div th:if="${danger} !=null" class="alert alert-danger" role="alert" th:text="${danger}"></div>
 
 	</header>
 
