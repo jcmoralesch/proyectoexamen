@@ -26,8 +26,6 @@ public class Venta implements Serializable{
 		fechaVenta=LocalDate.now();
 	}
 	
-	
-
 	public Long getId() {
 		return id;
 	}

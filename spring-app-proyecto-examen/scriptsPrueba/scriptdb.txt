@@ -1,0 +1,81 @@
+create table clientes(
+    id int auto_increment,
+    nombre varchar(40),
+    direcion varchar(100),
+    fecha_nacimiento date,
+    dpi varchar(25),
+    no_telefono varchar(10),
+    edad int, 
+    
+    PRIMARY KEY (id)
+    
+);
+
+create table paquetes(
+    id int auto_increment,
+    nombre varchar(30),
+    precio float(8,2),
+    tipo varchar(10),
+    cantidad_bolson varchar(30),
+    vigencia varchar(20),
+    
+    PRIMARY KEY (id)
+);
+
+create table ventas(
+  id int auto_increment,
+  fecha_venta date,
+  cliente_id int,
+  paquete_id int,
+  fecha_vencimiento date,
+  estado varchar(10),
+    
+  PRIMARY KEY (id),
+  CONSTRAINT ventas_cliente_id_fk FOREIGN KEY (cliente_id) REFERENCES clientes(id),
+  CONSTRAINT ventas_paquete_id_fk FOREIGN KEY (paquete_id) REFERENCES paquetes(id)
+);
+
+create table compra_clientes(
+   id int auto_increment,
+   cliente_id int,
+   no_compra int,
+   paquete_id int,
+    
+  PRIMARY KEY(id),
+  CONSTRAINT compra_cliente_id_fk FOREIGN KEY (cliente_id) REFERENCES clientes(id),
+  CONSTRAINT compra_paquete_id_fk FOREIGN KEY (paquete_id) REFERENCES paquetes(id)
+);
+
+
+
+
+
+************************Procedimiento almacenado para registrar paquete*********************************
+
+
+DELIMITER ;;
+CREATE PROCEDURE registrarpaquete(
+    IN paramIn1 varchar(30),
+    IN paramIn2 float(8,2),
+    IN paramIn3 varchar(10),
+    IN paramIn4 varchar(30),
+    IN paramIn5 varchar(20),
+    OUT paramOut varchar(20)
+)
+BEGIN 
+
+   insert into paquetes(nombre,precio,tipo,cantidad_bolson,vigencia)values(paramIn1,paramIn2,paramIn3,paramIn4,paramIn5);
+   
+   set paramOut='Registro exitoso';
+
+END ;;
+
+DELIMITER ;
+
+
+
+select * from ventas where ventas.cliente_id='Juan' and BETWEEN ventas.fecha_venta='2020-01-01' and ventas.fecha_venta'2020-08-21';
+
+
+
+

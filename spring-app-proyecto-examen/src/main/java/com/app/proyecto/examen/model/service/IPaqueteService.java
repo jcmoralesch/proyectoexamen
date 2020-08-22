@@ -11,5 +11,4 @@ public interface IPaqueteService {
 	public List<Paquete> findAll();
 	
 	String procedureRegistrarPaquete(String paramIn1,Double paramIn2,String paramIn3,String paramIn4,String paramIn5);
-
 }
